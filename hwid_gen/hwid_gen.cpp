@@ -63,7 +63,8 @@ int main()
     DWORD RegetPath = sizeof(Reget);
     RegOpenKeyExA(HKEY_LOCAL_MACHINE, "HARDWARE\\DESCRIPTION\\System\\BIOS", NULL, KEY_QUERY_VALUE, &rKey);
     RegQueryValueExA(rKey, "BIOSVersion", NULL, NULL, (LPBYTE)&Reget, &RegetPath);
-
+    RegCloseKey(rKey);
+    
     std::cout << "Bios version: " <<  md5(Reget).c_str() << std::endl;
 
 
